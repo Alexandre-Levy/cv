@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexandre Levy — CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ── Variables — edit these to restyle the whole page ── */
+    :root {
+      --accent:    #1A5276;
+      --dark:      #2C3E50;
+      --light-bg:  #F2F3F4;
+      --text:      #222;
+      --muted:     #555;
+      --max-width: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── Header ── */
+    header {
+      border-bottom: 2.5px solid var(--accent);
+      padding-bottom: 20px;
+      margin-bottom: 28px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+
+    header .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-top: 4px;
+      font-weight: 400;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      margin-top: 14px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .contact-row a, .contact-row span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--muted);
+    }
+
+    .contact-row a { color: var(--accent); }
+    .contact-row i { font-size: 0.85em; }
+
+    /* ── Sections ── */
+    section { margin-bottom: 26px; }
+
+    section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 4px;
+      margin-bottom: 14px;
+    }
+
+    /* ── Research interests ── */
+    .interests {
+      color: var(--text);
+      font-size: 0.93rem;
+      line-height: 1.8;
+    }
+
+    .interests .tag {
+      display: inline-block;
+      background: var(--light-bg);
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin: 2px 3px;
+      font-size: 0.82rem;
+      color: var(--dark);
+      font-weight: 500;
+    }
+
+    /* ── CV entry (experience / education) ── */
+    .cv-entry { margin-bottom: 16px; }
+
+    .cv-entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 2px 8px;
+    }
+
+    .cv-entry-header .title {
+      font-weight: 600;
+      color: var(--dark);
+      font-size: 0.95rem;
+    }
+
+    .cv-entry-header .date {
+      font-size: 0.82rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .cv-entry .org {
+      font-style: italic;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    .cv-entry ul {
+      margin-top: 6px;
+      padding-left: 18px;
+      font-size: 0.88rem;
+    }
+
+    .cv-entry ul li {
+      margin-bottom: 3px;
+      list-style: none;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .cv-entry ul li::before {
+      content: '•';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ── Publications ── */
+    .pub-list { list-style: none; }
+
+    .pub-list li {
+      font-size: 0.88rem;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .pub-list li:last-child { border-bottom: none; }
+
+    .pub-list .venue {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .pub-links { margin-top: 4px; display: flex; gap: 10px; }
+
+    .pub-links a {
+      font-size: 0.78rem;
+      background: var(--light-bg);
+      padding: 2px 8px;
+      border-radius: 3px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Skills table ── */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .skills-table tr:nth-child(even) td { background: var(--light-bg); }
+
+    .skills-table td {
+      padding: 6px 10px;
+    }
+
+    .skills-table td:first-child {
+      font-weight: 600;
+      color: var(--dark);
+      width: 180px;
+    }
+
+    /* ── Languages ── */
+    .lang-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .lang-item strong { color: var(--dark); }
+
+    /* ── References grid ── */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .ref-card {
+      background: var(--light-bg);
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-size: 0.83rem;
+    }
+
+    .ref-card .ref-name { font-weight: 700; font-size: 0.92rem; color: var(--dark); }
+    .ref-card .ref-role { font-style: italic; color: var(--muted); margin-bottom: 6px; }
+    .ref-card .ref-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .ref-card .ref-links a { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .ref-grid { grid-template-columns: 1fr; }
+      .cv-entry-header { flex-direction: column; }
+    }
+
+    @media print {
+      body { font-size: 13px; }
+      .container { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <h1>Alexandre Levy</h1>
+    <div class="subtitle">PhD Student — Transparent AI for Autonomous Vehicles</div>
+    <div class="contact-row">
+      <span><i class="fa-solid fa-location-dot"></i> Barcelona, Spain</span>
+      <a href="mailto:alevy@cvc.uab.cat"><i class="fa-solid fa-envelope"></i> alevy@cvc.uab.cat</a>
+      <span><i class="fa-solid fa-phone"></i> (+33) 6 05 25 26 27</span>
+      <a href="https://www.linkedin.com/in/alexandre-levy-a14940163/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=Um9rfMwAAAAJ&hl=en" target="_blank">
+        <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+      </a>
+    </div>
+  </header>
+
+  <!-- ── RESEARCH INTERESTS ── -->
+  <section>
+    <h2>Research Interests</h2>
+    <div class="interests">
+      <span class="tag">Explainable AI (XAI)</span>
+      <span class="tag">Embodied AI</span>
+      <span class="tag">Safety-critical AI systems</span>
+      <span class="tag">End-to-end decision-making</span>
+      <span class="tag">Simulation-based learning</span>
+      <span class="tag">Bird-eye-view perception &amp; sensor fusion</span>
+      <span class="tag">LLM</span>
+      <span class="tag">VLM</span>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section>
+    <h2>Education</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">PhD in Computer Vision / AI</span>
+        <span class="date">Jan 2024 – Present</span>
+      </div>
+      <div class="org">Computer Vision Center (CVC), UAB — Barcelona, Spain</div>
+      <ul>
+        <li>Thesis: <em>"Developing Transparent Artificial Intelligence Mechanisms for Enhanced Decision-Making in Autonomous Vehicles"</em></li>
+        <li>Supervisors: Antonio M. López, Ernest Valveny Llobet</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">MSc in Robotics</span>
+        <span class="date">2019 – 2021</span>
+      </div>
+      <div class="org">École Polytechnique Fédérale de Lausanne (EPFL) — Lausanne, Switzerland</div>
+      <ul>
+        <li>Master thesis: <em>Object Segmentation in a 3D Video Stream</em> — collaboration with Logitech Europe S.A.</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">BSc in Microengineering</span>
+        <span class="date">2016 – 2019</span>
+      </div>
+      <div class="org">École Polytechnique Fédérale de Lausanne (EPFL) — Lausanne, Switzerland</div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section>
+    <h2>Research &amp; Industry Experience</h2>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">PhD Researcher — Transparent AI for Autonomous Vehicles</span>
+        <span class="date">Jan 2024 – Present</span>
+      </div>
+      <div class="org">Computer Vision Center (CVC), UAB — Barcelona, Spain</div>
+      <ul>
+        <li>Developing interpretable deep learning frameworks for autonomous driving decision-making, with emphasis on attention analysis</li>
+        <li>Building simulation-to-real evaluation pipelines with LLM and VLM-based scene analysis</li>
+        <li>Trained end-to-end driving models to attend to safety-critical regions via saliency loss</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">Perception Engineer — AI &amp; Computer Vision Projects</span>
+        <span class="date">Dec 2022 – Dec 2023</span>
+      </div>
+      <div class="org">Computer Vision Center (CVC), UAB — Barcelona, Spain</div>
+      <ul>
+        <li>Auto-labeling pipeline for partially labeled segmentation dataset for Autonomous Driving</li>
+        <li>Creation of edge cases in diverse driving conditions for the training of robust AI models</li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">Perception Engineer — Autonomous Vehicle for Public Transport</span>
+        <span class="date">Nov 2021 – Nov 2022</span>
+      </div>
+      <div class="org">Computer Vision Center (CVC), UAB — Barcelona, Spain</div>
+      <ul>
+        <li>Computer vision engineer on a public transport autonomous vehicle project in a rural environment</li>
+        <li>Applied deep imitation learning with bird-eye-view perception and sensor fusion (Radar + Camera) in CARLA Simulator and on a real Volkswagen autonomous vehicle</li>
+        <li>
+          <i class="fa-brands fa-youtube" style="color:#c00"></i>
+          <a href="https://www.youtube.com/watch?v=ZPCt7xkgvX0" target="_blank">Documentary — Autonomous Vehicle for Rural Public Transport</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cv-entry">
+      <div class="cv-entry-header">
+        <span class="title">Research Intern — 3D Object Segmentation (Master Thesis)</span>
+        <span class="date">Mar 2021 – Aug 2021</span>
+      </div>
+      <div class="org">Logitech Europe S.A. / EPFL — Lausanne, Switzerland</div>
+      <ul>
+        <li>Developed a 3D video stream object segmentation pipeline using image processing and deep learning</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ── -->
+  <section>
+    <h2>Publications</h2>
+    <ul class="pub-list">
+      <li>
+        <strong>A. Levy</strong>, E. Valveny Llobet, A. M. López Peña.
+        "From Driving Videos to Simulatable Scenarios."
+        <span class="venue">IEEE Intelligent Transportation Systems Conference (ITSC), 2026.</span>
+        <div class="pub-links">
+          <a href="https://alexandre-levy.github.io/DV2S.github.io/" target="_blank">Project Page</a>
+          <a href="https://github.com/Alexandre-Levy/DV2S" target="_blank">Code</a>
+        </div>
+      </li>
+      <li>
+        D. Porres, Y. Xiao, G. Villalonga, <strong>A. Levy</strong>, A. M. López.
+        "Guiding Attention in End-to-End Driving Models."
+        <span class="venue">IEEE Intelligent Vehicles Symposium (IV), 2024.</span>
+        <div class="pub-links">
+          <a href="https://ieeexplore.ieee.org/document/10588598" target="_blank">IEEE</a>
+          <a href="https://arxiv.org/abs/2405.00242" target="_blank">arXiv</a>
+        </div>
+      </li>
+      <li>
+        R. Abad, A. Borràs, P. Cano, A. Contreras, D. Gil, <strong>A. Levy</strong>, et al.
+        "LAIA: Labelled Attention for Intelligent Automobiles Dataset."
+        <div class="pub-links">
+          <a href="https://cloningdcb.org" target="_blank">Dataset Page</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ── TECHNICAL SKILLS ── -->
+  <section>
+    <h2>Technical Skills</h2>
+    <table class="skills-table">
+      <tr><td>Programming</td><td>Python, C, C++</td></tr>
+      <tr><td>Machine Learning / Deep Learning</td><td>PyTorch, TensorFlow, Scikit-Learn</td></tr>
+      <tr><td>Computer Vision</td><td>OpenCV, Scikit-Image</td></tr>
+      <tr><td>Data Analysis</td><td>Pandas, Matplotlib, Seaborn</td></tr>
+      <tr><td>Simulation</td><td>CARLA, CATIA</td></tr>
+      <tr><td>Robotics</td><td>ROS</td></tr>
+      <tr><td>DevOps</td><td>Docker, Git</td></tr>
+    </table>
+  </section>
+
+  <!-- ── LANGUAGES ── -->
+  <section>
+    <h2>Languages</h2>
+    <div class="lang-row">
+      <div class="lang-item"><strong>French</strong> — Native</div>
+      <div class="lang-item"><strong>English</strong> — Fluent (C1)</div>
+      <div class="lang-item"><strong>Spanish</strong> — Fluent (C1)</div>
+    </div>
+  </section>
+
+  <!-- ── INTERESTS ── -->
+  <section>
+    <h2>Interests</h2>
+    <p style="font-size:0.88rem;">Running — Marathon finisher (2h52)</p>
+  </section>
+
+  <!-- ── REFERENCES ── -->
+  <section>
+    <h2>References</h2>
+    <div class="ref-grid">
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Antonio M. López</div>
+        <div class="ref-role">PhD Supervisor — Professor<br>Computer Vision Center (CVC), UAB</div>
+        <div class="ref-links">
+          <a href="mailto:antonio@cvc.uab.es"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/antonio-m-l%C3%B3pez-94517434/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=3LYW1zMAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Prof. Ernest Valveny</div>
+        <div class="ref-role">PhD Supervisor — Associate Professor<br>Computer Vision Center (CVC), UAB</div>
+        <div class="ref-links">
+          <a href="mailto:ernest@cvc.uab.cat"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/ernest-valveny-06127a7b/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=ChmX8ogAAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Dr. Gabriel Villalonga</div>
+        <div class="ref-role">Postdoc Researcher — Autonomous Driving<br>Computer Vision Center (CVC), UAB</div>
+        <div class="ref-links">
+          <a href="mailto:gvillalonga@cvc.uab.cat"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/gabriel-villalonga-pineda-724786ba/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=byJeaV0AAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-name">Dr. Antoni Bigata</div>
+        <div class="ref-role">Gen AI Research Scientist<br>Natwest</div>
+        <div class="ref-links">
+          <a href="mailto:antoni.bigatacasademunt@natwest.com"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="https://www.linkedin.com/in/antoni-bigata/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=LuIdiV8AAAAJ" target="_blank"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

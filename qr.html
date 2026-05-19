@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexandre Levy — Links</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    /* ── UPDATE THIS URL once your CV is hosted ── */
+    /* Set CV_URL in the <script> block below      */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #2C3E50;
+      font-weight: 700;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .qr-row {
+      display: flex;
+      gap: 60px;
+      align-items: flex-start;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .qr-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .qr-box {
+      border: 3px solid #1A5276;
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+      box-shadow: 0 4px 18px rgba(26,82,118,0.10);
+    }
+
+    .qr-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #1A5276;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .qr-sublabel {
+      font-size: 0.75rem;
+      color: #999;
+      text-align: center;
+      max-width: 160px;
+      word-break: break-all;
+    }
+
+    .divider {
+      width: 1px;
+      height: 200px;
+      background: #e0e0e0;
+      align-self: center;
+    }
+
+    footer {
+      margin-top: 56px;
+      font-size: 0.78rem;
+      color: #bbb;
+      text-align: center;
+    }
+
+    @media (max-width: 500px) {
+      .divider { display: none; }
+      .qr-row { gap: 40px; }
+    }
+
+    @media print {
+      body { padding: 20px; }
+      .qr-box { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Alexandre Levy</h1>
+  <div class="subtitle">PhD Researcher — Transparent AI for Autonomous Vehicles</div>
+
+  <div class="qr-row">
+
+    <div class="qr-item">
+      <div class="qr-box" id="qr-cv"></div>
+      <div class="qr-label">CV</div>
+      <div class="qr-sublabel" id="label-cv"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="qr-item">
+      <div class="qr-box" id="qr-linkedin"></div>
+      <div class="qr-label">LinkedIn</div>
+      <div class="qr-sublabel">linkedin.com/in/alexandre-levy-a14940163</div>
+    </div>
+
+  </div>
+
+  <footer>Scan to connect &nbsp;·&nbsp; alevy@cvc.uab.cat</footer>
+
+  <script>
+    // ── UPDATE THIS once your CV page is hosted ──────────────────────
+    // Example: "https://alexandre-levy.github.io/cv"
+    var CV_URL = "https://YOUR-CV-URL-HERE";
+    // ─────────────────────────────────────────────────────────────────
+
+    var LINKEDIN_URL = "https://www.linkedin.com/in/alexandre-levy-a14940163/";
+
+    // Show the URL under the CV QR code
+    document.getElementById("label-cv").textContent = CV_URL;
+
+    new QRCode(document.getElementById("qr-cv"), {
+      text: CV_URL,
+      width: 200,
+      height: 200,
+      colorDark: "#1A5276",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+    new QRCode(document.getElementById("qr-linkedin"), {
+      text: LINKEDIN_URL,
+      width: 200,
+      height: 200,
+      colorDark: "#1A5276",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  </script>
+
+</body>
+</html>
